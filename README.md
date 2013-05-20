@@ -14,10 +14,10 @@ how to use
 Screenshots
 ====
 
-![pci list][screenshot/pci_list.png]
+![pci list](https://github.com/fcwu/lfdk/raw/master/screenshot/pci_list.png)
 
-![pci register][screenshot/pci_reg.png]
+![pci register](https://github.com/fcwu/lfdk/raw/master/screenshot/pci_reg.png)
 
-![memory][screenshot/mem.png]
+![memory](https://github.com/fcwu/lfdk/raw/master/screenshot/mem.png)
 
-![io space][screenshot/io.png]
+![io space](https://github.com/fcwu/lfdk/raw/master/screenshot/io.png)
