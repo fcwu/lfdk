@@ -13,14 +13,14 @@ SIZE				=   $(CROSS_COMPILE)size
 STRINGS				=   $(CROSS_COMPILE)strings
 STRIP				=   $(CROSS_COMPILE)strip
 
-CFLAGS				=
-LDFLAGS				=   -lpanel
+CFLAGS				=   `pkg-config --cflags panel`
+LDFLAGS				=   `pkg-config --libs panel`
 OBJS				=   lfdk
 LIBS				=	libmem.c libpci.c libio.c
 
 
 all:
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(OBJS) $(OBJS).c $(LIBS)
+	$(CC) -o $(OBJS) $(OBJS).c $(LIBS) $(CFLAGS) $(LDFLAGS)
 	$(STRIP) $(OBJS)
 
 clean:

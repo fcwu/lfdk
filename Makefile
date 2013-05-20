@@ -1,7 +1,7 @@
 
 
 all:
-	mkdir bin
+	mkdir -p bin
 	$(MAKE) -C lfdd
 	$(MAKE) -C lfdk
 	cp -f lfdd/lfdd_drv.ko bin
@@ -10,6 +10,6 @@ all:
 clean:
 	$(MAKE) -C lfdd clean
 	$(MAKE) -C lfdk clean
-	rm -rf bin
+	-rm -rf bin
 
 
