@@ -21,3 +21,13 @@ Screenshots
 ![memory](https://github.com/fcwu/lfdk/raw/master/screenshot/mem.png)
 
 ![io space](https://github.com/fcwu/lfdk/raw/master/screenshot/io.png)
+
+TODO
+====
+* Sometimes kernel panic happended in memory screen
+  * change lfdd to fwts driver
+  * driver packs to DKMS
+* Add acpi, dmi.. log collection function
+* Q method debug
+* Pack to debian package
+* Upload to PPA
