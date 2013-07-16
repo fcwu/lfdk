@@ -1,0 +1,30 @@
+#!/bin/sh
+
+NAME=lfdk
+PACKAGE_NAME=$NAME-dkms
+DEB_NAME=$(echo $PACKAGE_NAME | sed 's,_,-,')
+CVERSION=`dpkg-query -W -f='${Version}' $DEB_NAME | awk -F "-" '{print $1}' | cut -d\: -f2`
+
+set -e
+
+case "$1" in
+    remove|upgrade|deconfigure)
+      if [  "`dkms status -m $NAME`" ]; then
+         dkms remove -m $NAME -v $CVERSION --all
+      fi
+    ;;
+
+    failed-upgrade)
+    ;;
+
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0
+
+

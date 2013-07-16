@@ -1,0 +1,18 @@
+Index: lfdk.git/Makefile
+===================================================================
+--- lfdk.git.orig/Makefile	2013-07-16 00:44:24.740223101 -0400
++++ lfdk.git/Makefile	2013-07-16 05:02:02.967773559 -0400
+@@ -2,13 +2,10 @@
+ 
+ all:
+ 	mkdir -p bin
+-	$(MAKE) -C lfdd
+ 	$(MAKE) -C lfdk
+-	cp -f lfdd/lfdd_drv.ko bin
+ 	cp -f lfdk/lfdk bin
+ 
+ clean:
+-	$(MAKE) -C lfdd clean
+ 	$(MAKE) -C lfdk clean
+ 	-rm -rf bin
+ 

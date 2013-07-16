@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_HARDENING=1
+
+VERSION=$(shell dpkg-parsechangelog | awk '/^Version/ { print $$2 }')
+DKMS_SRC_DIR := $(CURDIR)/debian/lfdk-dkms/usr/src/lfdk-$(VERSION)
+SHARE_LFDD := $(CURDIR)/debian/lfdk-dkms/usr/share/lfdk-dkms
+BIN_DIR := $(CURDIR)/debian/lfdk/usr/bin
+
+override_dh_auto_install:
+	install -d $(DKMS_SRC_DIR)
+	install -d $(BIN_DIR)
+	install -m 755 $(CURDIR)/bin/lfdk $(BIN_DIR)/lfdk.real
+	install -m 755 $(CURDIR)/debian/lfdk.sh $(BIN_DIR)/lfdk
+	install $(CURDIR)/debian/lfdk-dkms.dkms $(DKMS_SRC_DIR)/dkms.conf
+	install -d $(SHARE_LFDD)
+	install -m 755 /usr/lib/dkms/common.postinst $(SHARE_LFDD)/postinst
+	cp -a lfdd/* $(DKMS_SRC_DIR)
+	dh_auto_install
+
+#override_dh_auto_build:
+#	dh_auto_build
+#
+%:
+	dh $@

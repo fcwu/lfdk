@@ -1,0 +1,26 @@
+GIT_SRC = lfdk.git
+SERIES = precise raring
+
+.PYONY: ${SERIES}
+
+all: ${SERIES}
+
+${SERIES}:
+	cp -r ${GIT_SRC} lfdk~$@
+	cd lfdk~$@ \
+		&& git reset --hard HEAD \
+		&& git clean -xdf \
+		&& rm -rf .git \
+		&& dch -i -D $@ "GIT: " `GIT_DIR=../${GIT_SRC} git log -1 | head -1 | cut -d ' ' -f 2` \
+		&& sed -i '1 s/(\(.*\))/(\1~$@)/' debian/changelog \
+		&& debuild -S
+
+clean:
+	@for series in ${SERIES} ; do \
+		echo rm -rf lfdk~$$series; \
+		rm -rf lfdk~$$series; \
+	done
+	rm -rf lfdk-bzr
+
+dput:
+	#dput ppa:fcwu-tw/oem lfdk_0.3ubuntu1~precise_source.changes

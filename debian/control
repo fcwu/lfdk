@@ -1,0 +1,14 @@
+Source: lfdk
+Section: devel
+Vcs-Git: git://github.com/fcwu/lfdk.git
+Priority: optional
+Maintainer: Doro Wu <doro.wu@canonical.com>
+Standards-Version: 3.9.3
+Build-Depends: debhelper (>= 7.0.50~), dkms, libncurses5-dev, pkg-config
+
+Package: lfdk
+Architecture: amd64
+Priority: optional
+Depends: ${shlibs:Depends}, ${misc:Depends}, libncurses5, dkms, linux-headers-generic | linux-headers | linux-headers-generic-lts-quantal | linux-headers-generic-lts-raring
+Description: Linux Firmware Debug Kit
+  A BIOS debugging tool, which is similar to RU

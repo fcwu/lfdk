@@ -1,0 +1,6 @@
+PACKAGE_NAME="lfdk"
+PACKAGE_VERSION="0.1"
+MAKE[0]="make"
+BUILT_MODULE_NAME[0]="lfdd_drv"
+DEST_MODULE_LOCATION[0]="/updates"
+AUTOINSTALL="yes"
