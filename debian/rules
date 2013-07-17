@@ -4,8 +4,8 @@ export DEB_BUILD_HARDENING=1
 
 PACKAGE=$(shell dpkg-parsechangelog | awk '/^Source/ { print $$2 }')
 VERSION=$(shell dpkg-parsechangelog | awk '/^Version/ { print $$2 }')
-DKMS_SRC_DIR := $(CURDIR)/debian/lfdk-dkms/usr/src/lfdk-$(VERSION)
-SHARE_LFDD := $(CURDIR)/debian/lfdk-dkms/usr/share/lfdk-dkms
+DKMS_SRC_DIR := $(CURDIR)/debian/lfdk/usr/src/lfdk-$(VERSION)
+SHARE_LFDD := $(CURDIR)/debian/lfdk/usr/share/lfdk
 BIN_DIR := $(CURDIR)/debian/lfdk/usr/bin
 GIT_VERSION=$(shell git log -1 | head -1 | cut -d ' ' -f 2)
 
@@ -26,7 +26,9 @@ override_dh_auto_install:
 %:
 	dh $@
 
-GIT_SRC = lfdk.git
+################################################################################
+# Ubuntu packing script
+################################################################################
 SERIES = precise raring
 
 .PYONY: ${SERIES}
@@ -46,6 +48,7 @@ ${SERIES}:
 	cd $(CURDIR)/../lfdk~$@ && debuild -S
 	#pbuilder-dist precise build $(CURDIR)/../lfdk_$(VERSION)ubuntu1~precise.dsc
 	#dput ppa:fcwu-tw/ppa lfdk_0.3ubuntu1~precise_source.changes
+	#pbuilder-dist precise create
 
 tar_orig:
 	rm -rf $(CURDIR)/../tar

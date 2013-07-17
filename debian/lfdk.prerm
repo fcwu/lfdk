@@ -1,7 +1,7 @@
 #!/bin/sh
 
 NAME=lfdk
-PACKAGE_NAME=$NAME-dkms
+PACKAGE_NAME=$NAME
 DEB_NAME=$(echo $PACKAGE_NAME | sed 's,_,-,')
 CVERSION=`dpkg-query -W -f='${Version}' $DEB_NAME | awk -F "-" '{print $1}' | cut -d\: -f2`
 

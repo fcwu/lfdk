@@ -1,3 +1,9 @@
+lfdk (0.2) UNRELEASED; urgency=low
+
+  * Update debian files
+
+ -- Doro Wu <doro.wu@canonical.com>  Wed, 17 Jul 2013 06:37:56 -0400
+
 lfdk (0.1) UNRELEASED; urgency=low
 
   * Initial Debian release
