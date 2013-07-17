@@ -56,7 +56,7 @@ tar_orig:
 		&& rm -rf .git
 	tar cJvf $(CURDIR)/../$(PACKAGE)_$(VERSION).orig.tar.xz -C $(CURDIR)/../tar ./
 
-clean:
+tar_clean:
 	@for series in ${SERIES} ; do \
 		echo rm -rf $(CURDIR)/../lfdk~$$series; \
 		rm -rf $(CURDIR)/../lfdk~$$series; \
